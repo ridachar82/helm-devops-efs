@@ -1,0 +1,19 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  namespace: default
+  name: artifactory-storage-pv
+  annotations:
+    pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    pv.beta.kubernetes.io/gid: "1030"
+spec:
+  capacity:
+    storage: 10Gi
+  storageClassName: standard
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /tmp/hostpath-provisioner/artifactory-storage-pv
+    type: ""
